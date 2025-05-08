@@ -252,12 +252,16 @@ if viz_mode == "País único":
                 ticks="outside",
                 ticklabelmode="period",
                 showline=True, linecolor="#bbb"
-            )
+            ),
+            dragmode='zoom',
+            hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
+            modebar=dict(orientation='v')
         )
-        fig_timeline.update_traces(opacity=0.8)
+        fig_timeline.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
+        fig_timeline.update_traces(opacity=0.95)
         # Removido: não adicionar labels de datas nos extremos para deixar só as barras
-        st.plotly_chart(fig_timeline, use_container_width=True)
-        
+        st.plotly_chart(fig_timeline, use_container_width=True, config={"displayModeBar": True, "displaylogo": False, "modeBarButtonsToAdd": ["drawline","drawopenpath","drawrect","drawcircle","eraseshape"]})
+
     except Exception as e:
         st.warning(f"Não foi possível carregar dados políticos: {e}")
     
@@ -297,10 +301,15 @@ if viz_mode == "País único":
             margin=dict(l=10, r=10, t=50, b=10),
             plot_bgcolor="rgba(0,0,0,0)",
             paper_bgcolor="rgba(0,0,0,0)",
-            font=dict(color="#f2f2f7")
+            font=dict(color="#f2f2f7"),
+            dragmode='zoom',
+            hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
+            xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikedash='dot', spikecolor='#D50032'),
+            yaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikedash='dot', spikecolor='#D50032'),
+            modebar=dict(orientation='v')
         )
-        
-        st.plotly_chart(fig, use_container_width=True)
+        fig.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
+        st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": True, "displaylogo": False, "modeBarButtonsToAdd": ["drawline","drawopenpath","drawrect","drawcircle","eraseshape"]})
 
         # Comparação com Média Regional
         # Calcular média regional por data (excluindo o país selecionado da média)
@@ -358,9 +367,16 @@ if viz_mode == "País único":
                 xaxis_title="Valor",
                 yaxis_title="Frequência",
                 bargap=0.1,
-                height=350
+                height=350,
+                dragmode='zoom',
+                hovermode='closest',
+                hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
+                xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikedash='dot', spikecolor='#D50032'),
+                yaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikedash='dot', spikecolor='#D50032'),
+                modebar=dict(orientation='v')
             )
-            st.plotly_chart(fig_hist, use_container_width=True, key="hist")
+            fig_hist.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
+            st.plotly_chart(fig_hist, use_container_width=True, config={"displayModeBar": True, "displaylogo": False, "modeBarButtonsToAdd": ["drawline","drawopenpath","drawrect","drawcircle","eraseshape"]}, key="hist")
 
         
 
@@ -498,17 +514,15 @@ else:  # Modo de comparação entre países
             plot_bgcolor="rgba(0,0,0,0)",
             paper_bgcolor="rgba(0,0,0,0)",
             font=dict(color="#f2f2f7"),
-            legend_bgcolor='rgba(0,0,0,0)'
+            legend_bgcolor='rgba(0,0,0,0)',
+            dragmode='zoom',
+            hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
+            xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikedash='dot', spikecolor='#D50032'),
+            yaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikedash='dot', spikecolor='#D50032'),
+            modebar=dict(orientation='v')
         )
-        fig_compare.update_layout(
-            xaxis_title="Data",
-            yaxis_title="Valor",
-            legend_title="País",
-            hovermode="x unified",
-            height=500,
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1, bgcolor='rgba(0,0,0,0)')
-        )
-        st.plotly_chart(fig_compare, use_container_width=True)
+        fig_compare.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
+        st.plotly_chart(fig_compare, use_container_width=True, config={"displayModeBar": True, "displaylogo": False, "modeBarButtonsToAdd": ["drawline","drawopenpath","drawrect","drawcircle","eraseshape"]})
 
         
         # Análise de correlação
@@ -531,11 +545,15 @@ else:  # Modo de comparação entre países
                     plot_bgcolor="rgba(0,0,0,0)",
                     paper_bgcolor="rgba(0,0,0,0)",
                     font=dict(color="#f2f2f7"),
-                    legend_bgcolor='rgba(0,0,0,0)'
+                    legend_bgcolor='rgba(0,0,0,0)',
+                    dragmode='zoom',
+                    hovermode='closest',
+                    hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
+                    modebar=dict(orientation='v')
                 )
+                fig_corr.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
                 fig_corr.update_layout(height=400)
-                st.plotly_chart(fig_corr, use_container_width=True)
-
+                st.plotly_chart(fig_corr, use_container_width=True, config={"displayModeBar": True, "displaylogo": False, "modeBarButtonsToAdd": ["drawline","drawopenpath","drawrect","drawcircle","eraseshape"]})
                 
                 st.info("Interpretação: Valores próximos a 1 indicam forte correlação positiva, -1 indica forte correlação negativa, e 0 indica ausência de correlação.")
                 
@@ -564,9 +582,16 @@ else:  # Modo de comparação entre países
             yaxis_title="",
             xaxis_title="Valor",
             height=500,
-            yaxis={'categoryorder':'total ascending'}
+            yaxis={'categoryorder':'total ascending'},
+            dragmode='zoom',
+            hovermode='closest',
+            hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
+            xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikedash='dot', spikecolor='#D50032'),
+            yaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikedash='dot', spikecolor='#D50032'),
+            modebar=dict(orientation='v')
         )
-        st.plotly_chart(fig_rank, use_container_width=True)
+        fig_rank.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
+        st.plotly_chart(fig_rank, use_container_width=True, config={"displayModeBar": True, "displaylogo": False, "modeBarButtonsToAdd": ["drawline","drawopenpath","drawrect","drawcircle","eraseshape"]})
 
         
         # Tabela de ranking
@@ -647,10 +672,14 @@ else:  # Modo de comparação entre países
         
         fig_map.update_layout(
             mapbox_style="carto-positron",
-            margin=dict(l=0, r=0, t=50, b=0)
+            margin=dict(l=0, r=0, t=50, b=0),
+            dragmode='zoom',
+            hovermode='closest',
+            hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
+            modebar=dict(orientation='v')
         )
-        st.plotly_chart(fig_map, use_container_width=True)
-
+        fig_map.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
+        st.plotly_chart(fig_map, use_container_width=True, config={"displayModeBar": True, "displaylogo": False, "modeBarButtonsToAdd": ["drawline","drawopenpath","drawrect","drawcircle","eraseshape"]})
 
     with compare_tabs[3]:
         # Análise estatística comparativa
