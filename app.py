@@ -243,18 +243,7 @@ if viz_mode == "País único":
             )
         )
         fig_timeline.update_traces(opacity=0.8)
-        # Adicionar labels de datas nos extremos
-        for i, row in mandatos.iterrows():
-            fig_timeline.add_annotation(
-                x=row["inicio"], y=row["presidente"],
-                text=row["mandato_inicio"],
-                showarrow=False, yshift=8, font=dict(size=10, color="#666")
-            )
-            fig_timeline.add_annotation(
-                x=row["fim"], y=row["presidente"],
-                text=row["mandato_fim"],
-                showarrow=False, yshift=8, font=dict(size=10, color="#666")
-            )
+        # Removido: não adicionar labels de datas nos extremos para deixar só as barras
         st.plotly_chart(fig_timeline, use_container_width=True)
         
     except Exception as e:
