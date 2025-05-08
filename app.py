@@ -131,7 +131,12 @@ indicator_columns = [col for col in df.columns if col not in ['country', 'date']
 from streamlit_option_menu import option_menu
 
 with st.sidebar:
-    st.markdown("<hr style='margin: 0 0 15px 0; border-top: 1px solid #111;'>", unsafe_allow_html=True)
+    st.markdown("""
+        <div style='color:#f2f2f7; font-family:sans-serif; font-size:1.3em; font-weight:600; margin-bottom:6px; letter-spacing:0.5px;'>
+            Navegação
+        </div>
+        <hr style='margin: 0 0 15px 0; border-top: 1px solid #111;'>
+    """, unsafe_allow_html=True)
     selected_menu = option_menu(
         None,  # Remove o título do menu
         ["País único", "Comparação entre países"],
