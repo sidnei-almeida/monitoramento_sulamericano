@@ -148,7 +148,7 @@ with st.sidebar:
                 "background-color": "rgba(0,0,0,0)",
             },
             "nav-link-selected": {
-                "background-color": "#D50032",
+                "background-color": "#4d4d5c",
                 "color": "#fff"
             },
             "nav-link:hover": {
