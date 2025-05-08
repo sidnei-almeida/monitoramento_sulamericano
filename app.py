@@ -338,7 +338,7 @@ if viz_mode == "País único":
                 legend_bgcolor='rgba(0,0,0,0)'
             )
 
-            st.plotly_chart(fig_trend, use_container_width=True)
+            st.plotly_chart(fig_trend, use_container_width=True, key="trend")
 
             # Mostrar métricas de tendência
             st.markdown("<h3><i class='fas fa-calculator'></i> Métricas de Tendência</h3>", unsafe_allow_html=True)
@@ -360,7 +360,7 @@ if viz_mode == "País único":
                 legend_bgcolor='rgba(0,0,0,0)'
             )
             
-            st.plotly_chart(fig_trend, use_container_width=True)
+            st.plotly_chart(fig_trend, use_container_width=True, key="trend")
 
             
             # Mostrar métricas de tendência
