@@ -262,36 +262,39 @@ if viz_mode == "País único":
         st.plotly_chart(fig, use_container_width=True)
 
         # Comparação com Média Regional
-        # Calcular média regional por data
-        regional_mean = df.groupby('date')[selected_indicator].mean().reset_index()
+        # Calcular média regional por data (excluindo o país selecionado da média)
+        regional_mean = df[df['country'] != selected_country].groupby('date')[selected_indicator].mean().reset_index()
         regional_mean = regional_mean.rename(columns={selected_indicator: 'Média Regional'})
         # Dados do país
         pais_data = country_data[['date', 'value']].rename(columns={'value': selected_country})
         # Unir país e média regional
         comp_df = pd.merge(pais_data, regional_mean, on='date', how='inner')
-        # Gráfico de linha
-        import plotly.graph_objects as go
-        fig_comp = go.Figure()
-        fig_comp.add_trace(go.Scatter(
-            x=comp_df['date'], y=comp_df[selected_country], mode='lines+markers', name=selected_country,
-            line=dict(color='#D50032', width=3)
-        ))
-        fig_comp.add_trace(go.Scatter(
-            x=comp_df['date'], y=comp_df['Média Regional'], mode='lines+markers', name='Média Regional',
-            line=dict(color='#43a047', width=3, dash='dash')
-        ))
-        fig_comp.update_layout(
-            title=f"{selected_indicator}: {selected_country} vs. Média Regional",
-            xaxis_title='Data',
-            yaxis_title='Valor',
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1, bgcolor='rgba(0,0,0,0)'),
-            height=400,
-            margin=dict(l=10, r=10, t=50, b=10),
-            plot_bgcolor="rgba(0,0,0,0)",
-            paper_bgcolor="rgba(0,0,0,0)",
-            font=dict(color="#f2f2f7")
-        )
-        st.plotly_chart(fig_comp, use_container_width=True, key="pais_vs_regional")
+        # Exibir gráfico apenas se houver dados válidos
+        if not comp_df.empty and comp_df[selected_country].notna().any() and comp_df['Média Regional'].notna().any():
+            import plotly.graph_objects as go
+            fig_comp = go.Figure()
+            fig_comp.add_trace(go.Scatter(
+                x=comp_df['date'], y=comp_df[selected_country], mode='lines+markers', name=selected_country,
+                line=dict(color='#D50032', width=3)
+            ))
+            fig_comp.add_trace(go.Scatter(
+                x=comp_df['date'], y=comp_df['Média Regional'], mode='lines+markers', name='Média Regional',
+                line=dict(color='#43a047', width=3, dash='dash')
+            ))
+            fig_comp.update_layout(
+                title=f"{selected_indicator}: {selected_country} vs. Média Regional",
+                xaxis_title='Data',
+                yaxis_title='Valor',
+                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1, bgcolor='rgba(0,0,0,0)'),
+                height=400,
+                margin=dict(l=10, r=10, t=50, b=10),
+                plot_bgcolor="rgba(0,0,0,0)",
+                paper_bgcolor="rgba(0,0,0,0)",
+                font=dict(color="#f2f2f7")
+            )
+            st.plotly_chart(fig_comp, use_container_width=True, key="pais_vs_regional")
+        else:
+            st.info(f"Não há dados suficientes para comparar {selected_country} com a média regional neste indicador.")
 
         # Análise de distribuição
         if not country_data["value"].isna().all():
