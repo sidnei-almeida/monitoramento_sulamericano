@@ -1,0 +1,185 @@
+/* Tema padronizado com o portfólio Sidnei Almeida */
+:root {
+    --primary-bg: #f7f8fa;
+    --secondary-bg: #fff;
+    --accent: #1565c0;
+    --text-main: #23272b;
+    --text-soft: #6c757d;
+    --border: #e3e6ea;
+    --radius: 14px;
+    --shadow: 0 2px 16px rgba(21,101,192,0.07);
+    --font-main: 'Jost', 'Segoe UI', Arial, sans-serif;
+}
+
+body, .stApp {
+    background: var(--primary-bg) !important;
+    color: var(--text-main) !important;
+    font-family: var(--font-main) !important;
+}
+
+/* Sidebar customizada */
+section[data-testid="stSidebar"] {
+    background: var(--secondary-bg) !important;
+    color: var(--text-main) !important;
+    border-right: 4px solid var(--accent) !important;
+    border-radius: 0 var(--radius) var(--radius) 0 !important;
+    min-height: 100vh;
+    box-shadow: 2px 0 12px rgba(21,101,192,0.04);
+    padding-top: 2rem !important;
+}
+
+/* Permite customizar o fundo facilmente */
+.sidebar-bg-custom {
+    background: linear-gradient(135deg, #1565c0 60%, #43a047 100%) !important;
+    color: #fff !important;
+}
+
+.toggle-sidebar-btn {
+    background: #1565c0;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 10px 0 20px 0;
+    width: 90%;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.toggle-sidebar-btn:hover {
+    background: #0d47a1;
+}
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] span {
+    color: var(--text-main) !important;
+    font-family: var(--font-main) !important;
+}
+
+/* Se quiser aplicar o fundo customizado, basta adicionar a classe .sidebar-bg-custom via JS ou manualmente */
+section[data-testid="stSidebar"] .stButton > button {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    font-weight: 600;
+    font-size: 1.1rem !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(21,101,192,0.08);
+    margin-top: 1rem;
+}
+section[data-testid="stSidebar"] .stButton > button:hover {
+    background: #0d47a1 !important;
+}
+
+/* Títulos principais */
+.stApp h1, .stApp h2, .stApp h3 {
+    color: var(--accent) !important;
+    font-family: var(--font-main) !important;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.3rem !important;
+}
+.stApp h1 {
+    font-size: 2.6rem !important;
+    color: #23272b !important;
+}
+.stApp h2 {
+    font-size: 2rem !important;
+}
+.stApp h3 {
+    font-size: 1.3rem !important;
+    color: var(--text-main) !important;
+}
+
+/* Containers e Cards */
+.stApp .main .block-container {
+    background: var(--secondary-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 3rem 2.2rem 2.5rem 2.2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    max-width: 1400px;
+}
+
+
+
+/* Card/container do gráfico de Gantt */
+.gantt-card {
+    max-width: 600px;
+    margin-left: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/* Garante que gráficos não ultrapassem o card */
+.gantt-card .stPlotlyChart, .gantt-card svg, .gantt-card figure {
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: hidden;
+    border-radius: var(--radius);
+}
+
+.block-container .stPlotlyChart {
+    max-width: 100% !important;
+    overflow-x: auto;
+    border-radius: var(--radius);
+}
+
+
+
+
+
+
+/* Botões */
+.stButton > button {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 1.15rem !important;
+    font-weight: 600;
+    padding: 0.6rem 2.2rem !important;
+    box-shadow: 0 2px 6px rgba(21,101,192,0.08);
+    transition: background 0.2s;
+}
+.stButton > button:hover {
+    background: #0d47a1 !important;
+}
+
+/* Inputs */
+.stTextInput>div>div>input, .stSelectbox>div>div, .stMultiSelect>div>div {
+    background: var(--primary-bg) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+}
+
+/* DataFrame e Tabelas */
+.stDataFrame, .stTable {
+    background: var(--secondary-bg) !important;
+    color: var(--text-main) !important;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: 1.1rem;
+}
+
+/* Gráficos Plotly */
+.stPlotlyChart {
+    background: var(--secondary-bg) !important;
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+/* Links */
+.stMarkdown a {
+    color: var(--accent) !important;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+/* Rodapé Streamlit */
+footer {display: none;}
