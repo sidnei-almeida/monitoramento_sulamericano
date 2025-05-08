@@ -132,7 +132,7 @@ from streamlit_option_menu import option_menu
 
 with st.sidebar:
     selected_menu = option_menu(
-        "Menu Principal",
+        None,  # Remove o título do menu
         ["País único", "Comparação entre países", "Sobre"],
         icons=["bar-chart-line", "people", "info-circle"],
         menu_icon="cast",
@@ -140,10 +140,11 @@ with st.sidebar:
         styles={
             "container": {"padding": "0!important", "background-color": "#232946"},
             "icon": {"color": "#ffe600", "font-size": "22px"},
-            "nav-link": {"font-size": "18px", "text-align": "left", "margin":"0px", "color":"#f2f2f7"},
+            "nav-link": {"font-size": "20px", "text-align": "left", "margin":"0px", "color":"#f2f2f7", "padding": "14px 8px"},
             "nav-link-selected": {"background-color": "#D50032", "color": "#fff"},
         }
     )
+    st.markdown("<hr style='margin: 10px 0 15px 0; border-top: 1px solid #ffe600;'>", unsafe_allow_html=True)
     st.header("Filtros e Controles")
     # Seleção de indicador comum para ambos os modos
     selected_indicator = st.selectbox("Selecione o indicador", indicator_columns)
