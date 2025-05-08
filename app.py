@@ -92,7 +92,7 @@ def format_number(value, indicator_code):
 
 # Cabeçalho principal com timestamp de atualização
 current_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-st.markdown("### Monitoramento Econômico em Tempo Real - América do Sul")
+st.markdown("### Monitoramento Econômico - América do Sul")
 st.caption(f"Última atualização: {current_time}")
 
 # Carregar dados
