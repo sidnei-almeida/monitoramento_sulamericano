@@ -582,12 +582,11 @@ else:  # Modo de comparação entre países
             yaxis_title="",
             xaxis_title="Valor",
             height=500,
-            yaxis={'categoryorder':'total ascending'},
             dragmode='zoom',
             hovermode='closest',
             hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
             xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikedash='dot', spikecolor='#D50032'),
-            yaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikedash='dot', spikecolor='#D50032'),
+            yaxis=dict(categoryorder='total ascending', showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikedash='dot', spikecolor='#D50032'),
             modebar=dict(orientation='v')
         )
         fig_rank.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
