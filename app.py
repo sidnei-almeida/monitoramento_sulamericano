@@ -304,8 +304,8 @@ if viz_mode == "País único":
             font=dict(color="#f2f2f7"),
             dragmode='zoom',
             hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
-            xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid', spikealpha=0.5),
-            yaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid', spikealpha=0.5),
+            xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid'),
+            yaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid'),
             modebar=dict(orientation='v')
         )
         fig.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
@@ -371,8 +371,8 @@ if viz_mode == "País único":
                 dragmode='zoom',
                 hovermode='closest',
                 hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
-                xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid', spikealpha=0.5),
-                yaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid', spikealpha=0.5),
+                xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid'),
+                yaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid'),
                 modebar=dict(orientation='v')
             )
             fig_hist.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
@@ -517,8 +517,8 @@ else:  # Modo de comparação entre países
             legend_bgcolor='rgba(0,0,0,0)',
             dragmode='zoom',
             hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
-            xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid', spikealpha=0.5),
-            yaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid', spikealpha=0.5),
+            xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid'),
+            yaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid'),
             modebar=dict(orientation='v')
         )
         fig_compare.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
@@ -585,8 +585,8 @@ else:  # Modo de comparação entre países
             dragmode='zoom',
             hovermode='closest',
             hoverlabel=dict(bgcolor="#232946", font_size=13, font_family="sans-serif"),
-            xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid', spikealpha=0.5),
-            yaxis=dict(categoryorder='total ascending', showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid', spikealpha=0.5),
+            xaxis=dict(showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid'),
+            yaxis=dict(categoryorder='total ascending', showspikes=True, spikemode='across', spikesnap='cursor', showline=True, showgrid=True, zeroline=False, showticklabels=True, spikecolor='#cccccc', spikethickness=0.7, spikedash='solid'),
             modebar=dict(orientation='v')
         )
         fig_rank.update_layout(modebar_add=['zoom', 'pan', 'select', 'lasso2d', 'resetScale2d', 'toImage'])
