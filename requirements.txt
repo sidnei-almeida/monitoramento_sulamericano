@@ -5,3 +5,4 @@ Requests==2.32.3
 scipy==1.15.2
 streamlit==1.45.0
 openpyxl==3.1.5
+streamlit-option-menu==0.4.0
