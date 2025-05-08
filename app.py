@@ -338,16 +338,7 @@ if viz_mode == "País único":
                 legend_bgcolor='rgba(0,0,0,0)'
             )
 
-            st.plotly_chart(fig_trend, use_container_width=True, key="trend")
-
-            # Mostrar métricas de tendência
-            st.markdown("<h3><i class='fas fa-calculator'></i> Métricas de Tendência</h3>", unsafe_allow_html=True)
-            st.info(f"Coeficiente de correlação (R²): {r_value**2:.4f}")
-            st.info(f"P-valor: {p_value:.4f}")
-            st.info(f"Erro padrão: {std_err:.4f}")
-
-
-            
+            # Atualizar layout antes de plotar
             fig_trend.update_layout(
                 xaxis_title="Data",
                 yaxis_title="Valor",
@@ -359,8 +350,13 @@ if viz_mode == "País único":
                 font=dict(color="#f2f2f7"),
                 legend_bgcolor='rgba(0,0,0,0)'
             )
-            
             st.plotly_chart(fig_trend, use_container_width=True, key="trend")
+
+            # Mostrar métricas de tendência
+            st.markdown("<h3><i class='fas fa-calculator'></i> Métricas de Tendência</h3>", unsafe_allow_html=True)
+            st.info(f"Coeficiente de correlação (R²): {r_value**2:.4f}")
+            st.info(f"P-valor: {p_value:.4f}")
+            st.info(f"Erro padrão: {std_err:.4f}")
 
             
             # Mostrar métricas de tendência
