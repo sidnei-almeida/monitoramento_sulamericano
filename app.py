@@ -346,15 +346,7 @@ if viz_mode == "País único":
             st.info(f"P-valor: {p_value:.4f}")
             st.info(f"Erro padrão: {std_err:.4f}")
 
-            fig_trend.add_trace(
-                go.Scatter(
-                    x=trend_data['date'],
-                    y=trend_data['trend'],
-                    mode='lines',
-                    name='Tendência',
-                    line=dict(color='#ffe600', width=3, dash='dash')  # Amarelo bem visível
-                )
-            )
+
             
             fig_trend.update_layout(
                 xaxis_title="Data",
