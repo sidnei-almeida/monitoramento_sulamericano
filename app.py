@@ -213,7 +213,19 @@ if viz_mode == "País único":
             x_end="fim",
             y="presidente",
             color="presidente",
-            color_discrete_sequence=["#1e88e5", "#43a047", "#e53935", "#fbc02d", "#8e24aa", "#00897b", "#f4511e", "#3949ab", "#6d4c41", "#c0ca33"],  # Paleta sóbria para Gantt
+            color_discrete_sequence=[
+                "#D50032", # vermelho vivo
+                "#1e88e5", # azul tema
+                "#ffe600", # amarelo tema
+                "#43a047", # verde
+                "#8e24aa", # roxo
+                "#f4511e", # laranja
+                "#3949ab", # azul escuro
+                "#00bcd4", # turquesa
+                "#ff9800", # laranja vivo
+                "#c2185b", # magenta
+                "#388e3c"  # verde escuro
+            ],
             hover_data={
                 "inicio": True,
                 "fim": True,
@@ -222,8 +234,8 @@ if viz_mode == "País único":
         )
         fig_timeline.update_yaxes(autorange="reversed")
         fig_timeline.update_traces(
-            marker=dict(line=dict(color="#333", width=0.7),
-                        opacity=0.95),
+            opacity=0.95,
+            marker_line_width=0  # Remove contorno das barras
         )
         fig_timeline.update_layout(
             plot_bgcolor="rgba(0,0,0,0)",
