@@ -128,13 +128,33 @@ if df.empty:
 indicator_columns = [col for col in df.columns if col not in ['country', 'date']]
 
 # Sidebar: filtros aprimorados
-st.sidebar.header("Filtros e Controles")
+from streamlit_option_menu import option_menu
 
-# Modo de visualização
-viz_mode = st.sidebar.radio("Modo de visualização", ["País único", "Comparação entre países"])
+with st.sidebar:
+    selected_menu = option_menu(
+        "Menu Principal",
+        ["País único", "Comparação entre países", "Sobre"],
+        icons=["bar-chart-line", "people", "info-circle"],
+        menu_icon="cast",
+        default_index=0,
+        styles={
+            "container": {"padding": "0!important", "background-color": "#232946"},
+            "icon": {"color": "#ffe600", "font-size": "22px"},
+            "nav-link": {"font-size": "18px", "text-align": "left", "margin":"0px", "color":"#f2f2f7"},
+            "nav-link-selected": {"background-color": "#D50032", "color": "#fff"},
+        }
+    )
+    st.header("Filtros e Controles")
+    # Seleção de indicador comum para ambos os modos
+    selected_indicator = st.selectbox("Selecione o indicador", indicator_columns)
 
-# Seleção de indicador comum para ambos os modos
-selected_indicator = st.sidebar.selectbox("Selecione o indicador", indicator_columns)
+# O menu controla o modo de visualização
+if selected_menu == "País único":
+    viz_mode = "País único"
+elif selected_menu == "Comparação entre países":
+    viz_mode = "Comparação entre países"
+else:
+    viz_mode = "Sobre"
 
 # Filtragem baseada no modo selecionado
 if viz_mode == "País único":
