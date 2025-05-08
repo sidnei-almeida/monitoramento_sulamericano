@@ -133,12 +133,12 @@ from streamlit_option_menu import option_menu
 with st.sidebar:
     selected_menu = option_menu(
         None,  # Remove o título do menu
-        ["País único", "Comparação entre países", "Sobre"],
-        icons=["bar-chart-line", "people", "info-circle"],
+        ["País único", "Comparação entre países"],
+        icons=["bar-chart-line", "people"],
         menu_icon="cast",
         default_index=0,
         styles={
-            "container": {"padding": "0!important", "background-color": "#232946"},
+            "container": {"padding": "0!important", "background-color": "rgba(0,0,0,0)"},
             "icon": {"color": "#ffe600", "font-size": "22px"},
             "nav-link": {"font-size": "20px", "text-align": "left", "margin":"0px", "color":"#f2f2f7", "padding": "14px 8px"},
             "nav-link-selected": {"background-color": "#D50032", "color": "#fff"},
