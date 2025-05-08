@@ -285,7 +285,7 @@ if viz_mode == "País único":
                 bargap=0.1,
                 height=350
             )
-            st.plotly_chart(fig_hist, use_container_width=True)
+            st.plotly_chart(fig_hist, use_container_width=True, key="hist")
 
         
         # Análise de tendência
