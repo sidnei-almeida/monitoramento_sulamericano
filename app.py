@@ -149,7 +149,7 @@ if viz_mode == "País único":
     
     # Verificar se há dados disponíveis
     if country_data.empty:
-        st.warning(f"Não há dados disponíveis para {selected_country} e o indicador selecionado.")
+        st.error(f"❌ Não existem dados disponíveis no momento para o país: **{selected_country}**.")
         st.stop()
     
     # Renomeando a coluna do indicador para facilitar o trabalho com os gráficos
@@ -396,8 +396,12 @@ else:  # Modo de comparação entre países
     
     # Verificar se há dados disponíveis
     if multi_data.empty:
-        st.warning("Nenhum dado disponível para os países selecionados.")
+        st.error("❌ Não existem dados disponíveis no momento para os países selecionados.")
         st.stop()
+    # Checar quais países não têm dados
+    missing_countries = [c for c in multi_countries if c not in multi_data['country'].unique()]
+    if missing_countries:
+        st.warning(f"Os seguintes países não possuem dados disponíveis: **{', '.join(missing_countries)}**")
     
     # Visão por abas
     compare_tabs = st.tabs(["Comparação Temporal", "Ranking", "Mapa", "Análise Estatística", "Correlação"])
