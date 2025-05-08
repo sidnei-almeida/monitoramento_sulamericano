@@ -158,7 +158,7 @@ if viz_mode == "País único":
     # Exibir presidente correspondente ao ano
     import pandas as pd
     try:
-        pres_df = pd.read_csv("https://github.com/sidnei-almeida/monitoramento_sulamericano/blob/main/presidentes.csv")
+        pres_df = pd.read_csv("https://raw.githubusercontent.com/sidnei-almeida/monitoramento_sulamericano/refs/heads/main/presidentes.csv")
         pres_df = pres_df[pres_df["pais"] == selected_country]
         # Gráfico de linha do tempo dos mandatos presidenciais
         import plotly.express as px
