@@ -139,12 +139,11 @@ with st.sidebar:
         default_index=0,
         styles={
             "container": {"padding": "0!important", "background-color": "rgba(0,0,0,0)"},
-            "icon": {"color": "#D50032", "font-size": "22px"},
+            "icon": {"color": "#fff", "font-size": "16px"},
             "nav-link": {
-                "font-size": "20px",
                 "text-align": "left",
                 "margin": "0px",
-                "color": "#f2f2f7",
+                "color": "#c7c7cc",
                 "padding": "14px 8px",
                 "background-color": "rgba(0,0,0,0)",
             },
@@ -158,7 +157,7 @@ with st.sidebar:
             }
         }
     )
-    st.markdown("<hr style='margin: 10px 0 15px 0; border-top: 1px solid #ffe600;'>", unsafe_allow_html=True)
+    st.markdown("<hr style='margin: 10px 0 15px 0; border-top: 1px solid #111;'>", unsafe_allow_html=True)
     st.header("Filtros e Controles")
     # Seleção de indicador comum para ambos os modos
     selected_indicator = st.selectbox("Selecione o indicador", indicator_columns)
