@@ -291,24 +291,20 @@ if viz_mode == "País único":
         # Análise de tendência
         if len(country_data) > 1:
             st.markdown("<h2><i class='fas fa-microscope'></i> Análise de Tendência</h2>", unsafe_allow_html=True)
-            
-            # Converter datas para números para calcular tendência
-            country_data['date_num'] = pd.to_datetime(country_data['date']).astype(np.int64)
-            x = country_data['date_num']
+
+            # Ordenar por data para garantir alinhamento
+            country_data = country_data.sort_values('date').reset_index(drop=True)
+            # Converter datas para números para regressão
+            date_dt = pd.to_datetime(country_data['date'])
+            x = date_dt.view('int64')
             y = country_data['value']
-            
+
             # Calcular linha de tendência usando regressão linear
             slope, intercept, r_value, p_value, std_err = linregress(x, y)
-            print('DEBUG linregress:', slope, intercept, r_value, p_value, std_err)
 
-            # Criar DataFrame para a linha de tendência
-            trend_data = pd.DataFrame({
-                'date': country_data['date'],
-                'trend': slope * x + intercept
-            })
-            print('DEBUG trend_data:')
-            print(trend_data)
-            
+            # Gerar valores previstos para cada ponto do eixo X
+            trend = slope * x + intercept
+
             # Plotar dados com linha de tendência
             fig_trend = px.scatter(
                 country_data,
@@ -318,8 +314,38 @@ if viz_mode == "País único":
                 template="plotly_white",
                 color_discrete_sequence=["#D50032"]  # Rosa padrão
             )
-            
-            # Adicionar linha de tendência
+
+            # Adicionar linha de tendência (mesmo eixo X do gráfico principal)
+            fig_trend.add_trace(
+                go.Scatter(
+                    x=country_data['date'],
+                    y=trend,
+                    mode='lines',
+                    name='Tendência',
+                    line=dict(color='#ffe600', width=3, dash='dash')  # Amarelo bem visível
+                )
+            )
+
+            fig_trend.update_layout(
+                xaxis_title="Data",
+                yaxis_title="Valor",
+                hovermode="x unified",
+                height=400,
+                margin=dict(l=10, r=10, t=50, b=10),
+                plot_bgcolor="rgba(0,0,0,0)",
+                paper_bgcolor="rgba(0,0,0,0)",
+                font=dict(color="#f2f2f7"),
+                legend_bgcolor='rgba(0,0,0,0)'
+            )
+
+            st.plotly_chart(fig_trend, use_container_width=True)
+
+            # Mostrar métricas de tendência
+            st.markdown("<h3><i class='fas fa-calculator'></i> Métricas de Tendência</h3>", unsafe_allow_html=True)
+            st.info(f"Coeficiente de correlação (R²): {r_value**2:.4f}")
+            st.info(f"P-valor: {p_value:.4f}")
+            st.info(f"Erro padrão: {std_err:.4f}")
+
             fig_trend.add_trace(
                 go.Scatter(
                     x=trend_data['date'],
