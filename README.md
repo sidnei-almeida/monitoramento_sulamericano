@@ -16,7 +16,7 @@ Este projeto é um dashboard interativo desenvolvido em **Streamlit** para monit
 
 1. Clone este repositório:
    ```bash
-   git clone <URL_DO_REPOSITORIO>
+   git clone https://github.com/sidnei-almeida/monitoramento_sulamericano
    ```
 2. Instale as dependências:
    ```bash
