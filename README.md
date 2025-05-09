@@ -5,6 +5,7 @@ Este projeto é um dashboard interativo desenvolvido em **Streamlit** para monit
 ## Funcionalidades Principais
 
 - Visualização de séries temporais para cada país e indicador.
+- **Score de Risco de Investimento** para avaliação comparativa entre países.
 - Comparação entre múltiplos países em tempo real.
 - Análise de correlação entre indicadores econômicos.
 - Mapa interativo de distribuição dos indicadores.
@@ -50,3 +51,13 @@ Este dashboard foi desenvolvido para compor o meu portfólio de projetos de Data
 - Os dados econômicos são coletados em tempo real da API do World Bank.
 - O dashboard permite atualização manual ou automática a cada 1 hora.
 - Os dados disponíveis vão até o ano de 2025, conforme disponibilidade do World Bank.
+
+### Score de Risco de Investimento
+- **Nova funcionalidade (2025)**: Sistema de avaliação de risco relativo para investimentos nos países da América do Sul.
+- Utiliza um algoritmo que pondera múltiplos indicadores econômicos para gerar um score entre 0-100:
+  - **0-30**: Baixo risco de investimento (verde)
+  - **30-60**: Risco moderado (laranja)
+  - **60-100**: Alto risco (vermelho)
+- Considera indicadores como PIB, inflação, taxa de juros e desemprego, com pesos calibrados conforme o impacto no ambiente de investimento.
+- Disponibiliza visualizações comparativas e detalhadas para análise de risco por país.
+- Inclui explicação detalhada da metodologia para auxílio na tomada de decisões.
